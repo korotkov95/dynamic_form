@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <div class="entry">
+
+        <form method="post" action="/show/">
+        	{% csrf_token %}
+            <div class="name-rows">
+                {% for form in formset.forms %}
+                    {{ form.name.label_tag }}<br />
+                    {{ form.name }}
+                {% endfor %}
+            </div>
+            <p>
+                {{ formset.management_form }}
+                <input type="submit" value="Submit" />
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
